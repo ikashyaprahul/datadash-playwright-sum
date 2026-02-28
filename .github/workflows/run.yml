@@ -1,0 +1,27 @@
+name: DataDash QA
+
+on: [push]
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step with email 23f1003149@ds.study.iitm.ac.in
+        run: echo "Starting job"
+
+      - uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run script
+        run: node sum_tables.js
